@@ -2,4 +2,4 @@ __pycache__/
 *.pyc
 .DS_Store
 assets/avatar.png
-profile-preview.png
+profile-preview*.png

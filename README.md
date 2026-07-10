@@ -3,9 +3,10 @@
 </div>
 
 <div align="center">
-  <a href="https://20.business">20.business</a> ·
+  <a href="https://human20.app">human20.app</a> ·
+  <a href="https://evgyur.pro">evgyur.pro</a> ·
   <a href="https://t.me/chipda">Telegram</a> ·
-  <a href="https://x.com/iintellect">X</a>
+  <a href="https://x.com/chip1cr">X</a>
 </div>
 
 <br />

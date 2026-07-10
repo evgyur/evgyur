@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import base64
 import calendar
 import json
 import os
@@ -100,13 +101,12 @@ def row(y: int, label: str, value: str, value_class: str = "value") -> str:
     )
 
 
-def render_svg(stats: dict[str, str], portrait: str) -> str:
+def render_svg(stats: dict[str, str], portrait: str, portrait_image_b64: str) -> str:
     portrait_lines = portrait.splitlines()
     portrait_svg = []
     for index, line in enumerate(portrait_lines):
-        opacity = 0.78 + (index / max(len(portrait_lines), 1)) * 0.22
         portrait_svg.append(
-            f'<text x="54" y="{112 + index * 16}" class="portrait" opacity="{opacity:.2f}">'
+            f'<text x="43" y="{128 + index * 9.35:.2f}" class="portrait">'
             f"{escape(line)}</text>"
         )
 
@@ -115,7 +115,7 @@ def render_svg(stats: dict[str, str], portrait: str) -> str:
         text(488, 92, "evgyur@human20", "hero"),
         row(136, "OS", "Human + AI agent stack"),
         row(170, "Uptime", stats["uptime"], "accent"),
-        row(204, "Host", "Human20 · 20.business"),
+        row(204, "Host", "human20.app", "accent"),
         row(238, "Kernel", "AI systems · education · crypto"),
         row(272, "Runtime", "Hermes Agent · OpenClaw · Codex"),
         text(488, 316, "— BUILD SURFACE", "section"),
@@ -125,8 +125,8 @@ def render_svg(stats: dict[str, str], portrait: str) -> str:
         row(456, "Building", "Human20 · trading infra · OSS skills"),
         text(488, 500, "— CONTACT", "section"),
         row(538, "Telegram", "@chipda", "accent"),
-        row(572, "X", "@iintellect"),
-        row(606, "Web", "20.business"),
+        row(572, "X", "@chip1cr"),
+        row(606, "Web", "evgyur.pro", "accent"),
         text(488, 652, "— GITHUB SIGNAL", "section"),
     ]
 
@@ -164,16 +164,27 @@ def render_svg(stats: dict[str, str], portrait: str) -> str:
       <stop offset="1" stop-color="#7c5cff" stop-opacity="0"/>
     </radialGradient>
     <linearGradient id="portraitInk" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#d8fff7"/>
-      <stop offset="0.48" stop-color="#4de8c7"/>
-      <stop offset="1" stop-color="#7c5cff"/>
+      <stop offset="0" stop-color="#e7fff9"/>
+      <stop offset="0.48" stop-color="#61e7c6"/>
+      <stop offset="1" stop-color="#9a88ff"/>
     </linearGradient>
+    <linearGradient id="portraitShade" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#02090c" stop-opacity="0.02"/>
+      <stop offset="0.72" stop-color="#02090c" stop-opacity="0.10"/>
+      <stop offset="1" stop-color="#020409" stop-opacity="0.72"/>
+    </linearGradient>
+    <pattern id="scanlines" width="4" height="4" patternUnits="userSpaceOnUse">
+      <rect width="4" height="1" fill="#d8fff7" opacity="0.07"/>
+    </pattern>
+    <clipPath id="portraitClip">
+      <rect x="42" y="112" width="364" height="400" rx="20"/>
+    </clipPath>
     <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
       <feGaussianBlur stdDeviation="18"/>
     </filter>
     <style>
       text {{ font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace; }}
-      .portrait {{ font-size: 14px; fill: url(#portraitInk); white-space: pre; letter-spacing: 0.2px; }}
+      .portrait {{ font-size: 8.6px; fill: url(#portraitInk); white-space: pre; letter-spacing: 0.35px; opacity: 0.34; mix-blend-mode: screen; }}
       .eyebrow {{ font-size: 12px; fill: #8793a8; letter-spacing: 2.0px; font-weight: 700; }}
       .hero {{ font-size: 25px; fill: #f4f7fb; font-weight: 700; letter-spacing: -0.5px; }}
       .key {{ font-size: 14px; fill: #ffb454; font-weight: 700; }}
@@ -197,10 +208,17 @@ def render_svg(stats: dict[str, str], portrait: str) -> str:
   <text x="54" y="60" class="eyebrow">IDENTITY / ASCII SIGNAL</text>
   <text x="54" y="91" class="hero">chip@human20</text>
   <line x1="448" y1="42" x2="448" y2="724" stroke="#263143" stroke-opacity="0.82"/>
-  {''.join(portrait_svg)}
+  <g clip-path="url(#portraitClip)">
+    <image x="42" y="112" width="364" height="400" preserveAspectRatio="xMidYMid slice" href="data:image/webp;base64,{portrait_image_b64}"/>
+    <rect x="42" y="112" width="364" height="400" fill="url(#portraitShade)"/>
+    <rect x="42" y="112" width="364" height="400" fill="url(#scanlines)"/>
+    {''.join(portrait_svg)}
+  </g>
+  <rect x="42" y="112" width="364" height="400" rx="20" fill="none" stroke="#3de1c0" stroke-opacity="0.30"/>
+  <text x="54" y="536" class="micro">ASCII HYBRID · SOURCE: PUBLIC GITHUB AVATAR</text>
   <text x="54" y="638" class="section">— OPERATOR SIGNAL</text>
   <text x="54" y="670" class="micro">MODE  BUILD / OPERATE / TEACH</text>
-  <text x="54" y="694" class="micro">LINK  20.BUSINESS</text>
+  <text x="54" y="694" class="micro">LINK  EVGYUR.PRO</text>
   <text x="54" y="722" class="micro">PUBLIC PROFILE · NO PRIVATE RUNTIME DATA</text>
 
   {''.join(sections)}
@@ -225,7 +243,8 @@ def main() -> int:
         data = load_live_data(os.environ.get("GITHUB_TOKEN"))
     stats = summarize(data)
     portrait = (ROOT / "assets" / "portrait.txt").read_text(encoding="utf-8")
-    output = render_svg(stats, portrait)
+    portrait_image_b64 = base64.b64encode((ROOT / "assets" / "avatar-portrait.webp").read_bytes()).decode("ascii")
+    output = render_svg(stats, portrait, portrait_image_b64)
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(output, encoding="utf-8")
     sys.stdout.write(json.dumps({"output": str(args.output), "stats": stats}, ensure_ascii=False) + "\n")
