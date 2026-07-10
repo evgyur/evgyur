@@ -100,25 +100,42 @@ def row(y: int, label: str, value: str, value_class: str = "value") -> str:
     )
 
 
-def render_svg(stats: dict[str, str], portrait: str) -> str:
-    portrait_lines = portrait.splitlines()
-    portrait_ramp = " .,:;irsXA253hMHGS#9B&@"
-    portrait_svg = []
-    for row_index, line in enumerate(portrait_lines):
-        for column_index, character in enumerate(line):
-            if character == " ":
-                continue
-            level = portrait_ramp.index(character) / (len(portrait_ramp) - 1)
-            opacity = 0.28 + level * 0.72
-            portrait_svg.append(
-                f'<text x="{47 + column_index * 6.75:.2f}" '
-                f'y="{125 + row_index * 10.25:.2f}" class="portrait" '
-                f'opacity="{opacity:.2f}">{escape(character)}</text>'
-            )
+def render_portrait(portrait: dict[str, Any]) -> str:
+    cols = int(portrait["cols"])
+    rows = int(portrait["rows"])
+    cells = portrait["cells"]
+    if cols <= 0 or rows <= 0 or not isinstance(cells, list):
+        raise ValueError("invalid portrait glyph payload")
+    x_step = 364 / cols
+    y_step = 400 / rows
+    font_size = y_step * 0.94
+    glyphs = []
+    for cell in cells:
+        if not isinstance(cell, list) or len(cell) not in (4, 5):
+            raise ValueError("invalid portrait glyph cell")
+        x, y, char, opacity = cell[:4]
+        color = str(cell[4]) if len(cell) == 5 else "#7effdc"
+        if len(color) != 7 or not color.startswith("#"):
+            raise ValueError("invalid portrait glyph color")
+        try:
+            int(color[1:], 16)
+        except ValueError as error:
+            raise ValueError("invalid portrait glyph color") from error
+        if not (0 <= int(x) < cols and 0 <= int(y) < rows):
+            raise ValueError("portrait glyph outside grid")
+        glyphs.append(
+            f'<text x="{42 + int(x) * x_step:.3f}" '
+            f'y="{112 + (int(y) + 0.82) * y_step:.3f}" '
+            f'font-size="{font_size:.3f}" opacity="{float(opacity):.3f}" '
+            f'fill="{escape(color)}" class="portraitGlyph">{escape(str(char))}</text>'
+        )
+    return "".join(glyphs)
 
+
+def render_svg(stats: dict[str, str], portrait: dict[str, Any]) -> str:
     sections = [
         text(488, 60, "PROFILE / SYSTEM OVERVIEW", "eyebrow"),
-        text(488, 92, "evgyur@human20", "hero"),
+        text(488, 92, "chip@human20.app", "hero"),
         row(136, "OS", "Human + AI agent stack"),
         row(170, "Uptime", stats["uptime"], "accent"),
         row(204, "Host", "human20.app", "accent"),
@@ -152,6 +169,8 @@ def render_svg(stats: dict[str, str], portrait: str) -> str:
             ]
         )
 
+    portrait_svg = render_portrait(portrait)
+
     return f'''<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
   <title id="title">Evgeny Yurchenko — terminal profile</title>
   <desc id="desc">Terminal-style GitHub profile with an ASCII portrait, public focus areas, contact links and live GitHub statistics.</desc>
@@ -169,14 +188,7 @@ def render_svg(stats: dict[str, str], portrait: str) -> str:
       <stop offset="0" stop-color="#7c5cff" stop-opacity="0.14"/>
       <stop offset="1" stop-color="#7c5cff" stop-opacity="0"/>
     </radialGradient>
-    <linearGradient id="portraitInk" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#e7fff9"/>
-      <stop offset="0.48" stop-color="#61e7c6"/>
-      <stop offset="1" stop-color="#9a88ff"/>
-    </linearGradient>
-    <pattern id="scanlines" width="4" height="4" patternUnits="userSpaceOnUse">
-      <rect width="4" height="1" fill="#d8fff7" opacity="0.07"/>
-    </pattern>
+
     <clipPath id="portraitClip">
       <rect x="42" y="112" width="364" height="400" rx="20"/>
     </clipPath>
@@ -185,7 +197,6 @@ def render_svg(stats: dict[str, str], portrait: str) -> str:
     </filter>
     <style>
       text {{ font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace; }}
-      .portrait {{ font-size: 10.8px; fill: url(#portraitInk); font-weight: 700; }}
       .eyebrow {{ font-size: 12px; fill: #8793a8; letter-spacing: 2.0px; font-weight: 700; }}
       .hero {{ font-size: 25px; fill: #f4f7fb; font-weight: 700; letter-spacing: -0.5px; }}
       .key {{ font-size: 14px; fill: #ffb454; font-weight: 700; }}
@@ -197,6 +208,7 @@ def render_svg(stats: dict[str, str], portrait: str) -> str:
       .statLabel {{ font-size: 10px; fill: #8290a7; letter-spacing: 1.0px; font-weight: 700; }}
       .statValue {{ font-size: 18px; fill: #eef4ff; font-weight: 700; }}
       .micro {{ font-size: 10px; fill: #76849a; letter-spacing: 0.7px; }}
+      .portraitGlyph {{ fill: #7effdc; font-weight: 600; }}
     </style>
   </defs>
 
@@ -207,15 +219,12 @@ def render_svg(stats: dict[str, str], portrait: str) -> str:
   <circle cx="176" cy="362" r="214" fill="#28d7b2" opacity="0.055" filter="url(#softGlow)"/>
 
   <text x="54" y="60" class="eyebrow">IDENTITY / ASCII SIGNAL</text>
-  <text x="54" y="91" class="hero">chip@human20</text>
+  <text x="54" y="91" class="hero">Evgeny &quot;Chip&quot; Yurchenko</text>
   <line x1="448" y1="42" x2="448" y2="724" stroke="#263143" stroke-opacity="0.82"/>
   <rect x="42" y="112" width="364" height="400" rx="20" fill="#04100f" fill-opacity="0.74"/>
-  <g clip-path="url(#portraitClip)">
-    <rect x="42" y="112" width="364" height="400" fill="url(#scanlines)"/>
-    {''.join(portrait_svg)}
-  </g>
+  <g clip-path="url(#portraitClip)">{portrait_svg}</g>
   <rect x="42" y="112" width="364" height="400" rx="20" fill="none" stroke="#3de1c0" stroke-opacity="0.30"/>
-  <text x="54" y="536" class="micro">PURE ASCII · SOURCE: PUBLIC GITHUB AVATAR</text>
+  <text x="54" y="536" class="micro">ASCII PORTRAIT · SOURCE: PUBLIC GITHUB AVATAR</text>
   <text x="54" y="638" class="section">— OPERATOR SIGNAL</text>
   <text x="54" y="670" class="micro">MODE  BUILD / OPERATE / TEACH</text>
   <text x="54" y="694" class="micro">LINK  EVGYUR.PRO</text>
@@ -242,7 +251,7 @@ def main() -> int:
     else:
         data = load_live_data(os.environ.get("GITHUB_TOKEN"))
     stats = summarize(data)
-    portrait = (ROOT / "assets" / "portrait.txt").read_text(encoding="utf-8")
+    portrait = json.loads((ROOT / "assets" / "portrait-glyphs.json").read_text(encoding="utf-8"))
     output = render_svg(stats, portrait)
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(output, encoding="utf-8")
