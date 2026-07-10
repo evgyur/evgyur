@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Evgeny Yurchenko — terminal profile</title>
+  <desc id="desc">Terminal-style GitHub profile with an ASCII portrait, public focus areas, contact links and live GitHub statistics.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#05070b"/>
+      <stop offset="0.52" stop-color="#0a0f17"/>
+      <stop offset="1" stop-color="#080b12"/>
+    </linearGradient>
+    <radialGradient id="cyanGlow" cx="0.18" cy="0.58" r="0.54">
+      <stop offset="0" stop-color="#1dd3b0" stop-opacity="0.16"/>
+      <stop offset="1" stop-color="#1dd3b0" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="violetGlow" cx="0.92" cy="0.02" r="0.62">
+      <stop offset="0" stop-color="#7c5cff" stop-opacity="0.14"/>
+      <stop offset="1" stop-color="#7c5cff" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="portraitInk" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#d8fff7"/>
+      <stop offset="0.48" stop-color="#4de8c7"/>
+      <stop offset="1" stop-color="#7c5cff"/>
+    </linearGradient>
+    <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="18"/>
+    </filter>
+    <style>
+      text { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace; }
+      .portrait { font-size: 14px; fill: url(#portraitInk); white-space: pre; letter-spacing: 0.2px; }
+      .eyebrow { font-size: 12px; fill: #8793a8; letter-spacing: 2.0px; font-weight: 700; }
+      .hero { font-size: 25px; fill: #f4f7fb; font-weight: 700; letter-spacing: -0.5px; }
+      .key { font-size: 14px; fill: #ffb454; font-weight: 700; }
+      .dots { font-size: 14px; fill: #263143; letter-spacing: 1.5px; }
+      .value { font-size: 14px; fill: #c9d4e5; }
+      .accent { font-size: 14px; fill: #61e7c6; }
+      .section { font-size: 12px; fill: #8c98ad; letter-spacing: 1.6px; font-weight: 700; }
+      .statBox { fill: #0d141f; stroke: #253146; stroke-opacity: 0.8; }
+      .statLabel { font-size: 10px; fill: #8290a7; letter-spacing: 1.0px; font-weight: 700; }
+      .statValue { font-size: 18px; fill: #eef4ff; font-weight: 700; }
+      .micro { font-size: 10px; fill: #76849a; letter-spacing: 0.7px; }
+    </style>
+  </defs>
+
+  <rect width="1200" height="760" rx="26" fill="#020409"/>
+  <rect x="5" y="5" width="1190" height="750" rx="22" fill="url(#bg)" stroke="#202a39"/>
+  <rect x="6" y="6" width="1188" height="748" rx="21" fill="url(#cyanGlow)"/>
+  <rect x="6" y="6" width="1188" height="748" rx="21" fill="url(#violetGlow)"/>
+  <circle cx="176" cy="362" r="214" fill="#28d7b2" opacity="0.055" filter="url(#softGlow)"/>
+
+  <text x="54" y="60" class="eyebrow">IDENTITY / ASCII SIGNAL</text>
+  <text x="54" y="91" class="hero">chip@human20</text>
+  <line x1="448" y1="42" x2="448" y2="724" stroke="#263143" stroke-opacity="0.82"/>
+  <text x="54" y="112" class="portrait" opacity="0.78">           ,2MSSGGhh5X.</text><text x="54" y="128" class="portrait" opacity="0.79">         ,2#BB#BBBB#B#G2:</text><text x="54" y="144" class="portrait" opacity="0.79">        rS@@@@@@@@@@@@B#G2i</text><text x="54" y="160" class="portrait" opacity="0.80">       XSBBB##BB#SSSSS##BSG2,</text><text x="54" y="176" class="portrait" opacity="0.81">      ihSM2XrXAAXrriiirX2G#SA,</text><text x="54" y="192" class="portrait" opacity="0.82">   .,,Xh5rriiiiirriiirrrrr2h2,.</text><text x="54" y="208" class="portrait" opacity="0.82">  .:..;XXrrrriirrriiirrXAAXAr...</text><text x="54" y="224" class="portrait" opacity="0.83">  ,;,.,XArrrrXXXAXXXXXXrXA2X;...</text><text x="54" y="240" class="portrait" opacity="0.84"> i,:;;:A25hMS#ShA5#BBSGMh52Ai:;;;</text><text x="54" y="256" class="portrait" opacity="0.85"> r,:;riX5GSSS#S5iA##SS##Sh2Ariiii</text><text x="54" y="272" class="portrait" opacity="0.85"> r,:;X2XrAA2AAXr;rAAAAAXrrX2hMhir</text><text x="54" y="288" class="portrait" opacity="0.86">rr::i25XriiirrAA2222AXrirXAAGh2rAh</text><text x="54" y="304" class="portrait" opacity="0.87">AAi;r2A2AXXXXXG#S##M5h52252A22AX2h</text><text x="54" y="320" class="portrait" opacity="0.88">XXAAA5XA2A22255hhhhhMSGMh522XA#52h</text><text x="54" y="336" class="portrait" opacity="0.88">5MhGM52A2A2hGGMhMMMGSShhhh55hMSh2h</text><text x="54" y="352" class="portrait" opacity="0.89">5GMSSh2A2222255MSSGh2A5hhhh5GS#h2M</text><text x="54" y="368" class="portrait" opacity="0.90">5MMhMh2222552225hh5225hMMM52MS#5XM</text><text x="54" y="384" class="portrait" opacity="0.90">hSh2hSSAX22555MMMMGGMGGMMh22GS#52h</text><text x="54" y="400" class="portrait" opacity="0.91">G#M5AGG2XA225hGSSSSGGMMMM5A2GSShSS</text><text x="54" y="416" class="portrait" opacity="0.92"> #S5r5Gh2A2225hMMGMMMMMMh52AMS#hG</text><text x="54" y="432" class="portrait" opacity="0.93"> 52X:,. iAA222255hhhhhhh552AXr2hG</text><text x="54" y="448" class="portrait" opacity="0.93">    .   XAAA2222555hh5555252;. .;</text><text x="54" y="464" class="portrait" opacity="0.94">   .,   ;2222225555h555h52r:.. .</text><text x="54" y="480" class="portrait" opacity="0.95">   ,.   .i25555hhhhhhh52i,......</text><text x="54" y="496" class="portrait" opacity="0.96">   ,. .. .,iA25h52AXi;,........</text><text x="54" y="512" class="portrait" opacity="0.96">    . .......,::,,,...........</text><text x="54" y="528" class="portrait" opacity="0.97">      .......,...............</text><text x="54" y="544" class="portrait" opacity="0.98">      .............,........</text><text x="54" y="560" class="portrait" opacity="0.99">         ....   .,,.....</text><text x="54" y="576" class="portrait" opacity="0.99">               ...</text>
+  <text x="54" y="638" class="section">— OPERATOR SIGNAL</text>
+  <text x="54" y="670" class="micro">MODE  BUILD / OPERATE / TEACH</text>
+  <text x="54" y="694" class="micro">LINK  20.BUSINESS</text>
+  <text x="54" y="722" class="micro">PUBLIC PROFILE · NO PRIVATE RUNTIME DATA</text>
+
+  <text x="488" y="60" class="eyebrow" text-anchor="start">PROFILE / SYSTEM OVERVIEW</text><text x="488" y="92" class="hero" text-anchor="start">evgyur@human20</text><text x="488" y="136" class="key" text-anchor="start">OS</text>
+<text x="700" y="136" class="dots" text-anchor="start">········</text>
+<text x="786" y="136" class="value" text-anchor="start">Human + AI agent stack</text><text x="488" y="170" class="key" text-anchor="start">Uptime</text>
+<text x="700" y="170" class="dots" text-anchor="start">········</text>
+<text x="786" y="170" class="accent" text-anchor="start">3y 6m 28d on GitHub</text><text x="488" y="204" class="key" text-anchor="start">Host</text>
+<text x="700" y="204" class="dots" text-anchor="start">········</text>
+<text x="786" y="204" class="value" text-anchor="start">Human20 · 20.business</text><text x="488" y="238" class="key" text-anchor="start">Kernel</text>
+<text x="700" y="238" class="dots" text-anchor="start">········</text>
+<text x="786" y="238" class="value" text-anchor="start">AI systems · education · crypto</text><text x="488" y="272" class="key" text-anchor="start">Runtime</text>
+<text x="700" y="272" class="dots" text-anchor="start">········</text>
+<text x="786" y="272" class="value" text-anchor="start">Hermes Agent · OpenClaw · Codex</text><text x="488" y="316" class="section" text-anchor="start">— BUILD SURFACE</text><text x="488" y="354" class="key" text-anchor="start">Languages.Code</text>
+<text x="700" y="354" class="dots" text-anchor="start">········</text>
+<text x="786" y="354" class="accent" text-anchor="start">Python · Shell · JavaScript · HTML</text><text x="488" y="388" class="key" text-anchor="start">Languages.Real</text>
+<text x="700" y="388" class="dots" text-anchor="start">········</text>
+<text x="786" y="388" class="value" text-anchor="start">Russian · English</text><text x="488" y="422" class="key" text-anchor="start">Focus</text>
+<text x="700" y="422" class="dots" text-anchor="start">········</text>
+<text x="786" y="422" class="value" text-anchor="start">agents · automation · products</text><text x="488" y="456" class="key" text-anchor="start">Building</text>
+<text x="700" y="456" class="dots" text-anchor="start">········</text>
+<text x="786" y="456" class="value" text-anchor="start">Human20 · trading infra · OSS skills</text><text x="488" y="500" class="section" text-anchor="start">— CONTACT</text><text x="488" y="538" class="key" text-anchor="start">Telegram</text>
+<text x="700" y="538" class="dots" text-anchor="start">········</text>
+<text x="786" y="538" class="accent" text-anchor="start">@chipda</text><text x="488" y="572" class="key" text-anchor="start">X</text>
+<text x="700" y="572" class="dots" text-anchor="start">········</text>
+<text x="786" y="572" class="value" text-anchor="start">@iintellect</text><text x="488" y="606" class="key" text-anchor="start">Web</text>
+<text x="700" y="606" class="dots" text-anchor="start">········</text>
+<text x="786" y="606" class="value" text-anchor="start">20.business</text><text x="488" y="652" class="section" text-anchor="start">— GITHUB SIGNAL</text>
+  <rect x="488" y="672" width="148" height="56" rx="12" class="statBox"/><text x="502" y="692" class="statLabel" text-anchor="start">PUBLIC REPOS</text><text x="502" y="716" class="statValue" text-anchor="start">76</text><rect x="650" y="672" width="148" height="56" rx="12" class="statBox"/><text x="664" y="692" class="statLabel" text-anchor="start">ORIGINAL</text><text x="664" y="716" class="statValue" text-anchor="start">64</text><rect x="812" y="672" width="148" height="56" rx="12" class="statBox"/><text x="826" y="692" class="statLabel" text-anchor="start">STARS</text><text x="826" y="716" class="statValue" text-anchor="start">35</text><rect x="974" y="672" width="148" height="56" rx="12" class="statBox"/><text x="988" y="692" class="statLabel" text-anchor="start">FOLLOWERS</text><text x="988" y="716" class="statValue" text-anchor="start">29</text>
+  <text x="1138" y="740" class="micro" text-anchor="end">UPDATED 2026-07-10</text>
+</svg>
