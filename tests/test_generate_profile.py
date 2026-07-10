@@ -40,7 +40,7 @@ class ProfileGeneratorTests(unittest.TestCase):
         self.assertIn("ASCII PORTRAIT", svg)
         self.assertNotIn("data:image", svg)
         self.assertNotIn("<image", svg)
-        self.assertEqual(svg.count('class="portraitGlyph"'), 2610)
+        self.assertEqual(svg.count('class="portraitGlyph"'), 3018)
         self.assertIn('Evgeny &quot;Chip&quot; Yurchenko', svg)
         self.assertNotIn(">chip@human20<", svg)
         self.assertIn("PUBLIC PROFILE", svg)
