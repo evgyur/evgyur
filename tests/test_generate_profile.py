@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import base64
 import importlib.util
 import tempfile
 import unittest
@@ -29,18 +28,15 @@ class ProfileGeneratorTests(unittest.TestCase):
 
         data = json.loads((ROOT / "tests" / "fixtures" / "github.json").read_text())
         portrait = (ROOT / "assets" / "portrait.txt").read_text()
-        portrait_image = (ROOT / "assets" / "avatar-portrait.webp").read_bytes()
-        svg = MODULE.render_svg(
-            MODULE.summarize(data),
-            portrait,
-            base64.b64encode(portrait_image).decode("ascii"),
-        )
+        svg = MODULE.render_svg(MODULE.summarize(data), portrait)
         ET.fromstring(svg)
         self.assertNotIn("20.business", svg)
         self.assertNotIn("@iintellect", svg)
         self.assertIn("human20.app", svg)
         self.assertIn("@chip1cr", svg)
         self.assertIn("evgyur.pro", svg)
+        self.assertIn("PURE ASCII", svg)
+        self.assertNotIn("data:image", svg)
         self.assertIn("chip@human20", svg)
         self.assertIn("PUBLIC PROFILE", svg)
         self.assertNotIn("gho_", svg)
