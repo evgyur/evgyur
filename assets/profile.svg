@@ -61,7 +61,7 @@
 <text x="700" y="136" class="dots" text-anchor="start">········</text>
 <text x="786" y="136" class="value" text-anchor="start">Human + AI agent stack</text><text x="488" y="170" class="key" text-anchor="start">Uptime</text>
 <text x="700" y="170" class="dots" text-anchor="start">········</text>
-<text x="786" y="170" class="accent" text-anchor="start">3y 7m 15d on GitHub</text><text x="488" y="204" class="key" text-anchor="start">Host</text>
+<text x="786" y="170" class="accent" text-anchor="start">3y 7m 22d on GitHub</text><text x="488" y="204" class="key" text-anchor="start">Host</text>
 <text x="700" y="204" class="dots" text-anchor="start">········</text>
 <text x="786" y="204" class="accent" text-anchor="start">human20.app</text><text x="488" y="238" class="key" text-anchor="start">Kernel</text>
 <text x="700" y="238" class="dots" text-anchor="start">········</text>
@@ -82,6 +82,6 @@
 <text x="786" y="572" class="value" text-anchor="start">@chip1cr</text><text x="488" y="606" class="key" text-anchor="start">Web</text>
 <text x="700" y="606" class="dots" text-anchor="start">········</text>
 <text x="786" y="606" class="accent" text-anchor="start">evgyur.pro</text><text x="488" y="652" class="section" text-anchor="start">— GITHUB SIGNAL</text>
-  <rect x="488" y="672" width="148" height="56" rx="12" class="statBox"/><text x="502" y="692" class="statLabel" text-anchor="start">PUBLIC REPOS</text><text x="502" y="716" class="statValue" text-anchor="start">78</text><rect x="650" y="672" width="148" height="56" rx="12" class="statBox"/><text x="664" y="692" class="statLabel" text-anchor="start">ORIGINAL</text><text x="664" y="716" class="statValue" text-anchor="start">65</text><rect x="812" y="672" width="148" height="56" rx="12" class="statBox"/><text x="826" y="692" class="statLabel" text-anchor="start">STARS</text><text x="826" y="716" class="statValue" text-anchor="start">40</text><rect x="974" y="672" width="148" height="56" rx="12" class="statBox"/><text x="988" y="692" class="statLabel" text-anchor="start">FOLLOWERS</text><text x="988" y="716" class="statValue" text-anchor="start">31</text>
-  <text x="1138" y="740" class="micro" text-anchor="end">UPDATED 2026-07-25</text>
+  <rect x="488" y="672" width="148" height="56" rx="12" class="statBox"/><text x="502" y="692" class="statLabel" text-anchor="start">PUBLIC REPOS</text><text x="502" y="716" class="statValue" text-anchor="start">78</text><rect x="650" y="672" width="148" height="56" rx="12" class="statBox"/><text x="664" y="692" class="statLabel" text-anchor="start">ORIGINAL</text><text x="664" y="716" class="statValue" text-anchor="start">65</text><rect x="812" y="672" width="148" height="56" rx="12" class="statBox"/><text x="826" y="692" class="statLabel" text-anchor="start">STARS</text><text x="826" y="716" class="statValue" text-anchor="start">41</text><rect x="974" y="672" width="148" height="56" rx="12" class="statBox"/><text x="988" y="692" class="statLabel" text-anchor="start">FOLLOWERS</text><text x="988" y="716" class="statValue" text-anchor="start">32</text>
+  <text x="1138" y="740" class="micro" text-anchor="end">UPDATED 2026-08-02</text>
 </svg>
