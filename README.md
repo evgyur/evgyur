@@ -6,7 +6,7 @@
   <a href="https://human20.app">human20.app</a> ·
   <a href="https://evgyur.pro">evgyur.pro</a> ·
   <a href="https://t.me/chipda">Telegram</a> ·
-  <a href="https://x.com/chip1cr">X</a>
+  <a href="https://x.com/chipcr">X</a>
 </div>
 
 <br />

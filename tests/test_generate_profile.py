@@ -35,7 +35,7 @@ class ProfileGeneratorTests(unittest.TestCase):
         self.assertIn("chip@human20.app", svg)
         self.assertNotIn("evgyur@human20.app", svg)
         self.assertIn("human20.app", svg)
-        self.assertIn("@chip1cr", svg)
+        self.assertIn("@chipcr", svg)
         self.assertIn("evgyur.pro", svg)
         self.assertIn("ASCII PORTRAIT", svg)
         self.assertNotIn("data:image", svg)

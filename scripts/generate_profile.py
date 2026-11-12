@@ -148,7 +148,7 @@ def render_svg(stats: dict[str, str], portrait: dict[str, Any]) -> str:
         row(456, "Building", "Human20 · trading infra · OSS skills"),
         text(488, 500, "— CONTACT", "section"),
         row(538, "Telegram", "@chipda", "accent"),
-        row(572, "X", "@chip1cr"),
+        row(572, "X", "@chipcr"),
         row(606, "Web", "evgyur.pro", "accent"),
         text(488, 652, "— GITHUB SIGNAL", "section"),
     ]
